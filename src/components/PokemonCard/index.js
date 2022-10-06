@@ -20,7 +20,9 @@ export const PokemonCard = ({ pokemon }) => {
     // * Si no hay "information"
     if (Object.keys(information).length === 0) {
       axios.get(pokemon.url).then((respuesta) => {
-        setInformation(respuesta.data);
+        setTimeout(() => {
+          setInformation(respuesta.data);
+        }, 250);
       });
     }
   };
@@ -62,10 +64,6 @@ const PokemonCardBack = ({ pokemon, setFlip }) => {
     0,
     mostrarTodos ? pokemon.moves.length - 1 : 5
   ); //* Slice y if para mostrar todos o 5
-
-  setInterval(() => {
-    console.log("Ejecutar cada 2 seg");
-  }, 1000);
 
   return (
     <Card sx={{ backgroundColor: "cornsilk" }} onClick={() => setFlip(false)}>
