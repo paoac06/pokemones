@@ -9,6 +9,21 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { PokemonCard } from "../PokemonCard";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { purple } from "@mui/material/colors";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      // Purple and green play nicely together.
+      main: purple[500],
+    },
+    secondary: {
+      // This is green.A700 as hex.
+      main: "#11cb5f",
+    },
+  },
+});
 
 export const Pokemones = () => {
   const [pokemones, setPokemones] = useState([]);
@@ -60,27 +75,40 @@ export const Pokemones = () => {
           </Grid>
         </Box>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
-        <Stack spacing={2} direction="row">
-          <Button
-            disabled={prevUrl == null}
-            variant="contained"
-            onClick={() => {
-              obtenerPokemones(prevUrl);
-            }}
-          >
-            Anterior
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => {
-              obtenerPokemones(nextUrl);
-            }}
-          >
-            Siguiente
-          </Button>
-        </Stack>
-      </Box>
+      <ThemeProvider theme={theme}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mt: 5,
+          }}
+        >
+          <Stack spacing={2} direction="row">
+            <Button
+              sx={{
+                fontSize: 16,
+              }}
+              disabled={prevUrl == null}
+              color="secondary"
+              onClick={() => {
+                obtenerPokemones(prevUrl);
+              }}
+            >
+              Anterior
+            </Button>
+            <Button
+              sx={{
+                fontSize: 16,
+              }}
+              onClick={() => {
+                obtenerPokemones(nextUrl);
+              }}
+            >
+              Siguiente
+            </Button>
+          </Stack>
+        </Box>
+      </ThemeProvider>
     </Container>
   );
 };

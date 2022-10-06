@@ -91,17 +91,27 @@ const PokemonCardBack = ({ pokemon, setFlip }) => {
           gap: 1,
         }}
       >
-        <Fab
-          color="primary"
-          aria-label="add"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setMostrarTodos(!mostrarTodos);
+        <Box
+          sx={{
+            display: "flex",
+            alignSelf: "center",
+            mt: -0.5,
           }}
         >
-          {mostrarTodos ? <CloseIcon /> : <AddIcon />}
-        </Fab>
+          <Fab
+            size="small"
+            color="success"
+            aria-label="add"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setMostrarTodos(!mostrarTodos);
+            }}
+          >
+            {mostrarTodos ? <CloseIcon /> : <AddIcon />}
+          </Fab>
+        </Box>
+
         {moves?.map((poder) => {
           return <Chip label={poder?.move.name} />;
         })}
