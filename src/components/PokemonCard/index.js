@@ -9,6 +9,7 @@ import Chip from "@mui/material/Chip";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
+import LinearProgress from "@mui/material/LinearProgress";
 
 export const PokemonCard = ({ pokemon }) => {
   const [information, setInformation] = useState({});
@@ -56,12 +57,16 @@ const PokemonCardFront = ({ pokemon, setFlip }) => {
 
 const PokemonCardBack = ({ pokemon, setFlip }) => {
   const [mostrarTodos, setMostrarTodos] = useState(false); // * Muestra todos o solo 5 poderes.
-  if (Object.keys(pokemon).length === 0) return <>Cargando...</>; // * Si no hay pokemon muestra cargando
+  if (Object.keys(pokemon).length === 0) return <LinearProgress />; // * Si no hay pokemon muestra cargando
   const moves = pokemon.moves.slice(
     0,
     mostrarTodos ? pokemon.moves.length - 1 : 5
   ); //* Slice y if para mostrar todos o 5
-  console.log(pokemon.types);
+
+  setInterval(() => {
+    console.log("Ejecutar cada 2 seg");
+  }, 1000);
+
   return (
     <Card sx={{ backgroundColor: "cornsilk" }} onClick={() => setFlip(false)}>
       <Box sx={{ justifyContent: "center", display: "flex" }}>
