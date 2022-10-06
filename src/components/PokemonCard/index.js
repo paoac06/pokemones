@@ -39,7 +39,7 @@ export const PokemonCard = ({ pokemon }) => {
 
 const PokemonCardFront = ({ pokemon, setFlip }) => {
   return (
-    <Card sx={{ backgroundColor: "cornsilk" }} onClick={() => setFlip(true)}>
+    <Card sx={{ backgroundColor: "bisque" }} onClick={() => setFlip(true)}>
       <Box sx={{ justifyContent: "center", display: "flex" }}>
         <img src={pokemon.imagen} alt="img" />
       </Box>
@@ -66,7 +66,7 @@ const PokemonCardBack = ({ pokemon, setFlip }) => {
   ); //* Slice y if para mostrar todos o 5
 
   return (
-    <Card sx={{ backgroundColor: "cornsilk" }} onClick={() => setFlip(false)}>
+    <Card sx={{ backgroundColor: "bisque" }} onClick={() => setFlip(false)}>
       <Box sx={{ justifyContent: "center", display: "flex" }}>
         <img src={pokemon?.sprites?.front_shiny} alt="img" />
         <img src={pokemon?.sprites?.back_shiny} alt="img" />

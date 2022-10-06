@@ -1,6 +1,5 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { LinearProgress } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useState, useEffect } from "react";
 import axios from "axios";
